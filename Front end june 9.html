@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Consult The Word</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      /* Set background properties here */
+      background-image: url('/home/legend/Documents/CTW/image.jpg'); /* Replace with your image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      padding: 20px;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+
+    .prompt,
+    .sacredText {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    #results {
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <form id="chatForm">
+    <div class="prompt">
+      <label for="promptInput">Prompt:</label>
+      <input type="text" name="prompt" id="promptInput" placeholder="Enter a question or phrase..." />
+    </div>
+    <div class="sacredText">
+      <label for="scriptureSelect">Sacred Text:</label>
+      <select name="scripture" id="scriptureSelect">
+        <option disabled selected hidden>Choose a book</option>
+
+        <option value="TaoTeChing">All texts</option>
+        <option value="Bible">Bible</option>
+        <option value="Quran">Quran</option>
+        <option value="Gita">Bhagavad Gita</option>
+        <option value="Dhammapada">Dhammapada</option>
+        <option value="TaoTeChing">Tao Te Ching</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
