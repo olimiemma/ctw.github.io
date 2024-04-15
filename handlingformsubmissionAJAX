@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatApp</title>
+    <!-- Load Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <form id="chatForm">
+        <div class="prompt">
+            <label for="promptInput">Prompt:</label>
+            <input type="text" name="prompt" id="promptInput" placeholder="Enter a question or phrase..."/>
+        </div>
+        <div class="sacredText">
+            <label for="scriptureSelect">Sacred Text:</label>
+            <select name="scripture" id="scriptureSelect">
+                <!-- Initial value for demo purposes; remove these lines after -->
+                <option disabled selected hidden>Choose a book</option>
+
+                <!-- Add your desired options depending on available datasets -->
+                <option value="Bible">Bible</option>
+                <option value="Quran">Quran</option>
+                <option value="Gita">Bhagavad Gita</option>
+                <option value="Dhammapada">Dhammapada</option>
+                <option value="TaoTeChing">Tao Te Ching</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="results"></div>
+
+    <!-- Load jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#chatForm').submit(function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Retrieve form data
+                const prompt = $('#promptInput').val();
+                const scripture = $('#scriptureSelect').val();
+
+                // Make AJAX request to the server
+                $.ajax({
+                    type: 'POST',
+                    url: '/getScriptures',
+                    data: { prompt, scripture },
+                    success: function(response) {
+                        // Display the returned verses
+                        $('#results').html(response);
+                    `                    error: function(error) {
+                        console.log('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
